@@ -1,5 +1,6 @@
 package ca.avalonmc.avntp;
 
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static ca.avalonmc.avntp.AvNTP.messages;
@@ -21,6 +22,17 @@ public class AvNTPUtils {
 		}
 		
 		return message;
+		
+	}
+	
+	
+	public static void sendMessage (CommandSender receiver, String message) {
+		
+		if (message.length() > 0) {
+			
+			receiver.sendMessage(message);
+			
+		}
 		
 	}
 	

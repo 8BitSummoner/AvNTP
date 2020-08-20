@@ -46,22 +46,22 @@ public class AvNTPRequest {
 	
 	private void notifyTPA() {
 		
-		target.sendMessage(AvNTPUtils.processMessage("tpaRequestReceived", "sender", sender.getDisplayName()));
+		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("tpaRequestReceived", "sender", sender.getDisplayName()));
 		
 	}
 	
 	
 	private void notifyTPAHere() {
 		
-		target.sendMessage(AvNTPUtils.processMessage("tpaHereRequestReceived", "sender", sender.getDisplayName()));
+		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("tpaHereRequestReceived", "sender", sender.getDisplayName()));
 		
 	}
 	
 	
 	private void notifyExpiry() {
 		
-		sender.sendMessage(AvNTPUtils.processMessage("outgoingTpRequestTimedOut", "target", target.getDisplayName()));
-		target.sendMessage(AvNTPUtils.processMessage("incomingTpRequestTimedOut", "sender", sender.getDisplayName()));
+		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("outgoingTpRequestTimedOut", "target", target.getDisplayName()));
+		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("incomingTpRequestTimedOut", "sender", sender.getDisplayName()));
 		
 	}
 	

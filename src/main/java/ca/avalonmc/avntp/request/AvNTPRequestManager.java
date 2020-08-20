@@ -18,7 +18,7 @@ public class AvNTPRequestManager {
 		
 		if (requests.containsKey(AvNTPUtils.getRequestId(sender, targetPlayer))) {
 			
-			sender.sendMessage(AvNTPUtils.processMessage("requestAlreadyExists"));
+			AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("requestAlreadyExists"));
 			return false;
 			
 		}
@@ -27,12 +27,12 @@ public class AvNTPRequestManager {
 		
 		if (!econ.has(sender, cost)) {
 			
-			sender.sendMessage(AvNTPUtils.processMessage("notEnoughCurrency", "cost", Double.toString(cost)));
+			AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("notEnoughCurrency", "cost", Double.toString(cost)));
 			return false;
 			
 		}
 		
-		sender.sendMessage(AvNTPUtils.processMessage("requestSent", "targetPlayer", targetPlayer.getDisplayName(), "cost", Double.toString(cost)));
+		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("requestSent", "targetPlayer", targetPlayer.getDisplayName(), "cost", Double.toString(cost)));
 		
 		requests.put(AvNTPUtils.getRequestId(sender, targetPlayer), new AvNTPRequest(sender, targetPlayer, type));
 		

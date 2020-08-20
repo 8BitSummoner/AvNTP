@@ -63,14 +63,14 @@ public abstract class AvNTPCommand implements CommandExecutor {
 		
 		if (mustBePlayer && !(sender instanceof Player)) {
 			
-			sender.sendMessage("Sorry, this command is only available to players.");
+			AvNTPUtils.sendMessage(sender, "Sorry, this command is only available to players.");
 			return false;
 			
 		}
 		
 		if (!sender.hasPermission(permission)) {
 			
-			sender.sendMessage(AvNTPUtils.processMessage("insufficientPermission"));
+			AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("insufficientPermission"));
 			return false;
 			
 		}
@@ -84,14 +84,14 @@ public abstract class AvNTPCommand implements CommandExecutor {
 		
 		if (args.length > arguments.size()) {
 			
-			sender.sendMessage(AvNTPUtils.processMessage("tooManyArguments"));
+			AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("tooManyArguments"));
 			return false;
 			
 		}
 		
 		if (args.length < arguments.size()) {
 			
-			sender.sendMessage(AvNTPUtils.processMessage("tooFewArguments"));
+			AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("tooFewArguments"));
 			return false;
 			
 		}
@@ -105,21 +105,21 @@ public abstract class AvNTPCommand implements CommandExecutor {
 		
 		if (targetPlayer == null) {
 			
-			sender.sendMessage(AvNTPUtils.processMessage("playerNotFound"));
+			AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("playerNotFound"));
 			return false;
 			
 		}
 		
 		if (!targetPlayer.getWorld().equals(((Player)sender).getWorld())) {
 			
-			sender.sendMessage(AvNTPUtils.processMessage("playerDifferentDimension"));
+			AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("playerDifferentDimension"));
 			return false;
 			
 		}
 		
 		if (targetPlayer.getUniqueId().equals(((Player)sender).getUniqueId())) {
 			
-			sender.sendMessage(AvNTPUtils.processMessage("targetSameAsSender"));
+			AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("targetSameAsSender"));
 			return false;
 			
 		}
