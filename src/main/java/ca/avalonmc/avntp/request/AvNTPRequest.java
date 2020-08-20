@@ -14,13 +14,15 @@ public class AvNTPRequest {
 	private RequestType type;
 	private Player sender;
 	private Player target;
+	private double cost;
 	
 	
-	AvNTPRequest (Player sender, Player target, RequestType type) {
+	AvNTPRequest (Player sender, Player target, double cost, RequestType type) {
 		
 		this.type = type;
 		this.sender = sender;
 		this.target = target;
+		this.cost = cost;
 		
 		this.id = AvNTPUtils.getRequestId(sender, target);
 		
@@ -36,11 +38,59 @@ public class AvNTPRequest {
 	}
 	
 	
-	public void cancelRequest() {
+	public void resolveRequest () {
+		
+		cancelCountdown();
+		notifyAccepted();
+		
+		if (type == RequestType.TPA) {
+			
+			sender.teleport(target);
+			
+		} else if (type == RequestType.TPAHERE) {
+			
+			target.teleport(sender);
+			
+		}
+		
+		AvNTPRequestManager.removeRequest(id);
+		
+	}
+	
+	
+	public void cancelRequest () {
 		
 		cancelCountdown();
 		notifyCancelled();
 		AvNTPRequestManager.removeRequest(id);
+		
+	}
+	
+	
+	public void recalculateCost () {
+		
+		cost = AvNTPUtils.calculateTravelCost(sender, target);
+		
+	}
+	
+	
+	public double getCost () {
+		
+		return cost;
+		
+	}
+	
+	
+	public Player getSender () {
+		
+		return sender;
+		
+	}
+	
+	
+	public Player getTarget () {
+		
+		return target;
 		
 	}
 	
@@ -56,6 +106,14 @@ public class AvNTPRequest {
 			AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("tpaHereRequestReceived", "sender", sender.getDisplayName()));
 			
 		}
+		
+	}
+	
+	
+	private void notifyAccepted () {
+		
+		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("outgoingTpRequestAccepted", "target", target.getDisplayName()));
+		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("incomingTpRequestAccepted", "sender", sender.getDisplayName()));
 		
 	}
 	

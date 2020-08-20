@@ -1,9 +1,13 @@
 package ca.avalonmc.avntp.request;
 
 import ca.avalonmc.avntp.AvNTPUtils;
+import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 import static ca.avalonmc.avntp.AvNTP.config;
 import static ca.avalonmc.avntp.AvNTP.econ;
@@ -11,7 +15,7 @@ import static ca.avalonmc.avntp.AvNTP.econ;
 
 public class AvNTPRequestManager {
 	
-	private static HashMap<String, AvNTPRequest> requests = new HashMap<>();
+	private static LinkedHashMap<String, AvNTPRequest> requests = new LinkedHashMap<>();
 	
 	
 	public static boolean registerNewRequest (Player sender, Player targetPlayer, AvNTPRequest.RequestType type) {
@@ -23,7 +27,7 @@ public class AvNTPRequestManager {
 			
 		}
 		
-		double cost = AvNTPUtils.roundToPlaces((int)Math.round(sender.getLocation().distance(targetPlayer.getLocation())) * config.getDouble("costPerBlock", 0), 3);
+		double cost = AvNTPUtils.calculateTravelCost(sender, targetPlayer);
 		
 		if (!econ.has(sender, cost)) {
 			
@@ -34,9 +38,38 @@ public class AvNTPRequestManager {
 		
 		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("requestSent", "targetPlayer", targetPlayer.getDisplayName(), "cost", Double.toString(cost)));
 		
-		requests.put(AvNTPUtils.getRequestId(sender, targetPlayer), new AvNTPRequest(sender, targetPlayer, type));
+		requests.put(AvNTPUtils.getRequestId(sender, targetPlayer), new AvNTPRequest(sender, targetPlayer, cost, type));
 		
 		return true;
+		
+	}
+	
+	
+	public static boolean acceptLatestRequest (Player sender) {
+		
+		ArrayList<String> keys = new ArrayList<>(requests.keySet());
+		Collections.reverse(keys);
+		
+		for (String id : keys) {
+			
+			if (AvNTPUtils.splitRequestId(id)[1].equalsIgnoreCase(sender.getUniqueId().toString())) {
+				
+				AvNTPRequest request = requests.get(id);
+				
+				request.recalculateCost();
+				
+				econ.withdrawPlayer(request.getSender(), request.getCost());
+				AvNTPUtils.sendMessage(request.getSender(), AvNTPUtils.processMessage("tpChargeNotification", "cost", Double.toString(request.getCost())));
+				
+				request.resolveRequest();
+				return true;
+				
+			}
+			
+		}
+		
+		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("noRequestsToAccept"));
+		return false;
 		
 	}
 	

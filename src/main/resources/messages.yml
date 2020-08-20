@@ -7,6 +7,7 @@ tooManyArguments: "{&}4You typed too many words!"
 tooFewArguments: "{&}4You didn't enter enough information."
 targetSameAsSender: "{&}4You cannot teleport to yourself."
 noRequestsToCancel: "{&}4You do not currently have any outgoing requests."
+noRequestsToAccept: "{&}4You do not currently have any incoming requests."
 
 # Teleport unavailable
 playerNotFound: "{&}cThat player is either offline or in a different region!"
@@ -20,5 +21,8 @@ tpaRequestReceived: "{&}6{sender}{&}b has requested to teleport to you. Type {&}
 tpaHereRequestReceived: "{&}6{sender}{&}b has requested you to teleport to them. Type {&}a/tpaccept{&}b to accept, or {&}a/tpadeny{&}b to decline."
 outgoingTpRequestTimedOut: "{&}cYour teleportation request to {&}6{target}{&}c has timed out."
 incomingTpRequestTimedOut: "{&}cThe teleportation request from {&}6{sender}{&}c has timed out."
+outgoingTpRequestAccepted: "{&}bYour teleportation request to {&}6{target}{&}b has been accepted."
+incomingTpRequestAccepted: "{&}bThe teleportation request from {&}6{sender}{&}b has been accepted. Teleporting..."
 outgoingTpRequestCancelled: "{&}cYour teleportation request to {&}6{target}{&}c has been cancelled."
 incomingTpRequestCancelled: "{&}cThe teleportation request from {&}6{sender}{&}c has been cancelled."
+tpChargeNotification: "{&}bYou've been charged {&}6{cost}{&}b rubies."
