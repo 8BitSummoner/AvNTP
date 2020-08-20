@@ -38,7 +38,7 @@ public class AvNTPRequest {
 	}
 	
 	
-	public void resolveRequest () {
+	void resolveRequest () {
 		
 		cancelCountdown();
 		notifyAccepted();
@@ -58,7 +58,7 @@ public class AvNTPRequest {
 	}
 	
 	
-	public void cancelRequest () {
+	void cancelRequest () {
 		
 		cancelCountdown();
 		notifyCancelled();
@@ -67,7 +67,7 @@ public class AvNTPRequest {
 	}
 	
 	
-	public void denyRequest () {
+	void denyRequest () {
 		
 		cancelCountdown();
 		notifyDenied();
@@ -76,30 +76,23 @@ public class AvNTPRequest {
 	}
 	
 	
-	public void recalculateCost () {
+	void recalculateCost () {
 		
 		cost = AvNTPUtils.calculateTravelCost(sender, target);
 		
 	}
 	
 	
-	public double getCost () {
+	double getCost () {
 		
 		return cost;
 		
 	}
 	
 	
-	public Player getSender () {
+	Player getSender () {
 		
 		return sender;
-		
-	}
-	
-	
-	public Player getTarget () {
-		
-		return target;
 		
 	}
 	
@@ -159,7 +152,7 @@ public class AvNTPRequest {
 	
 	
 	public enum RequestType {
-		TPA, TPAHERE;
+		TPA, TPAHERE
 	}
 	
 }

@@ -119,7 +119,7 @@ public class AvNTPRequestManager {
 	}
 	
 	
-	public static void removeRequest (String request) {
+	static void removeRequest (String request) {
 		
 		requests.remove(request);
 	

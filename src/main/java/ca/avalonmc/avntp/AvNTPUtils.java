@@ -7,6 +7,7 @@ import static ca.avalonmc.avntp.AvNTP.config;
 import static ca.avalonmc.avntp.AvNTP.messages;
 
 
+@SuppressWarnings ("WeakerAccess")
 public class AvNTPUtils {
 	
 	@SuppressWarnings("ConstantConditions")
@@ -52,6 +53,7 @@ public class AvNTPUtils {
 	}
 	
 	
+	@SuppressWarnings ("ConstantConditions")
 	public static double calculateTravelCost (Player sender, Player targetPlayer) {
 		
 		return roundToPlaces(

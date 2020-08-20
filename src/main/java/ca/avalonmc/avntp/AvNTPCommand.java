@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
+@SuppressWarnings ({"BooleanMethodIsAlwaysInverted", "unused", "SameParameterValue", "WeakerAccess"})
 public abstract class AvNTPCommand implements CommandExecutor {
 	
 	private String label;
