@@ -45,7 +45,7 @@ public class AvNTPRequest {
 	}
 	
 	
-	private void notifyReceived() {
+	private void notifyReceived () {
 		
 		if (type == RequestType.TPA) {
 			
@@ -60,7 +60,7 @@ public class AvNTPRequest {
 	}
 	
 	
-	private void notifyCancelled() {
+	private void notifyCancelled () {
 		
 		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("outgoingTpRequestCancelled", "target", target.getDisplayName()));
 		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("incomingTpRequestCancelled", "sender", sender.getDisplayName()));
@@ -68,7 +68,7 @@ public class AvNTPRequest {
 	}
 	
 	
-	private void notifyExpiry() {
+	private void notifyExpiry () {
 		
 		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("outgoingTpRequestTimedOut", "target", target.getDisplayName()));
 		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("incomingTpRequestTimedOut", "sender", sender.getDisplayName()));
@@ -76,7 +76,7 @@ public class AvNTPRequest {
 	}
 	
 	
-	private void cancelCountdown() {
+	private void cancelCountdown () {
 		
 		Bukkit.getScheduler().cancelTask(countdown);
 		

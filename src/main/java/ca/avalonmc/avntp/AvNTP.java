@@ -75,7 +75,7 @@ public final class AvNTP extends JavaPlugin {
 	}
 	
 	
-	private boolean retrieveEconomy() {
+	private boolean retrieveEconomy () {
 		
 		if (getServer().getPluginManager().getPlugin("Vault") == null) {
 			return false;
@@ -95,7 +95,7 @@ public final class AvNTP extends JavaPlugin {
 	
 	
 	@SuppressWarnings ("ResultOfMethodCallIgnored")
-	private void loadPluginMessages() {
+	private void loadPluginMessages () {
 	
 		File messagesFile = new File(getDataFolder(), "messages.yml");
 		
