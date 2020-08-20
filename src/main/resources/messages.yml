@@ -1,0 +1,21 @@
+# AvNTP Chat Message Configuration File
+# Version 1.0
+
+# Incorrect command usage/permissions
+insufficientPermission: "{&}4You do not have the required permissions."
+tooManyArguments: "{&}4You typed too many words!"
+tooFewArguments: "{&}4You didn't enter enough information."
+targetSameAsSender: "{&}4You cannot teleport to yourself."
+
+# Teleport unavailable
+playerNotFound: "{&}cThat player is either offline or in a different region!"
+playerDifferentDimension: "{&}cThat player is currently in a different dimension!"
+requestAlreadyExists: "{&}cYou already have a request sent to that player!"
+notEnoughCurrency: "{&}cYou do not have enough rubies. You need {&}6{cost}{&}c rubies."
+
+# Notification messages
+requestSent: "{&}bRequest sent to {&}6{targetPlayer}{&}b. This will cost {&}6{cost}{&}b rubies. Type {&}a/tpacancel{&}b to cancel."
+tpaRequestReceived: "{&}6{sender}{&}b has requested to teleport to you. Type {&}a/tpaccept{&}b to accept, or {&}a/tpadeny{&}b to decline."
+tpaHereRequestReceived: "{&}6{sender}{&}b has requested you to teleport to them. Type {&}a/tpaccept{&}b to accept, or {&}a/tpadeny{&}b to decline."
+outgoingTpRequestTimedOut: "{&}cYour tp request to {&}6{target}{&}c has timed out."
+incomingTpRequestTimedOut: "{&}cYour tp request from {&}6{sender}{&}c has timed out."

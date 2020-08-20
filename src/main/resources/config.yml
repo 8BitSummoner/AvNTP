@@ -1,0 +1,8 @@
+# AvNTP Main Configuration File
+# Version 1.0
+
+# How much vault currency each block of distance will be worth
+costPerBlock: 0.05
+
+# How long teleportation requests should last before expiring.
+requestLiveTime: 30

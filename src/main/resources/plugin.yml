@@ -1,0 +1,44 @@
+name: AvNTP
+version: ${project.version}
+main: ca.avalonmc.avntp.AvNTP
+api-version: "1.16"
+prefix: AvNTP
+depend: [Vault]
+authors: [8BitSummoner]
+description: Custom teleportation plugin designed to provide similar functionality to that found in EssentialsX, with support for charging players currency upon teleport.
+website: avalonmc.ca
+commands:
+  avntpa:
+    description: Sends a request to teleport to the target player.
+    permission: avntp.tpa
+  avntpahere:
+    description: Sends a request to teleport the target player to you.
+    permission: avntp.tpahere
+  avntpacancel:
+    description: Cancels all current outgoing teleportation requests.
+    permission: avntp.tpacancel
+  avntpaccept:
+    description: Accepts an incoming teleportation request.
+    permission: avntp.tpaccept
+  avntpadeny:
+    description: Declines an incoming teleportation request.
+    permission: avntp.tpadeny
+permissions:
+  avntp.tpa:
+    default: op
+  avntp.tpahere:
+    default: op
+  avntp.tpacancel:
+    default: op
+  avntp.tpaaccept:
+    default: op
+  avntp.tpadeny:
+    default: op
+  avntp.all:
+    default: op
+    children:
+      avntp.tpa: true
+      avntp.tpahere: true
+      avntp.tpacancel: true
+      avntp.tpaccept: true
+      avntp.tpadeny: true
