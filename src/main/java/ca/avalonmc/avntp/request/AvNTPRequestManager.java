@@ -1,15 +1,12 @@
 package ca.avalonmc.avntp.request;
 
 import ca.avalonmc.avntp.AvNTPUtils;
-import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
-import java.util.Set;
 
-import static ca.avalonmc.avntp.AvNTP.config;
 import static ca.avalonmc.avntp.AvNTP.econ;
 
 
