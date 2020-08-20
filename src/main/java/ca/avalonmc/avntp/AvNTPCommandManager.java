@@ -2,19 +2,27 @@ package ca.avalonmc.avntp;
 
 import org.bukkit.command.PluginCommand;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 
 import static ca.avalonmc.avntp.AvNTP.log;
 
 
-public class AvNTPCommandManager {
+class AvNTPCommandManager {
 	
 	private static HashMap<String, AvNTPCommand> commands = new HashMap<>();
 	
+	private AvNTPTabCompleter tabCompleter;
 	
-	public void registerCommand (String commandLabel, Class commandClass, String... args) {
+	
+	AvNTPCommandManager (AvNTPTabCompleter tabCompleter) {
+		
+		this.tabCompleter = tabCompleter;
+		
+	}
+	
+	
+	@SuppressWarnings ("unchecked")
+	void registerCommand (String commandLabel, Class commandClass, String... args) {
 		
 		PluginCommand command = AvNTP.plugin.getCommand(commandLabel);
 		
@@ -37,15 +45,14 @@ public class AvNTPCommandManager {
 		
 		log.info("Registered command: " + commandLabel);
 		command.setExecutor(commands.get(commandLabel));
+		command.setTabCompleter(tabCompleter);
 		
 	}
 	
 	
-	public static ArrayList<AvNTPCommand> getCommands () {
+	static HashMap<String, AvNTPCommand> getCommands () {
 		
-		LinkedHashSet<AvNTPCommand> commandList = new LinkedHashSet<>(commands.values());
-		
-		return new ArrayList<AvNTPCommand>(commandList);
+		return commands;
 		
 	}
 	

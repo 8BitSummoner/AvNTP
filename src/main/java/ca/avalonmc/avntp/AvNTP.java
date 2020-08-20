@@ -66,7 +66,8 @@ public final class AvNTP extends JavaPlugin {
 		config = this.getConfig();
 		
 		// Register commands
-		AvNTPCommandManager commandManager = new AvNTPCommandManager();
+		AvNTPTabCompleter tabCompleter = new AvNTPTabCompleter();
+		AvNTPCommandManager commandManager = new AvNTPCommandManager(tabCompleter);
 		
 		commandManager.registerCommand("avntpa", CommandTPA.class, "<player>");
 		commandManager.registerCommand("avntpahere", CommandTPAHere.class, "<player>");
