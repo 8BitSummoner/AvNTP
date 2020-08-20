@@ -67,6 +67,15 @@ public class AvNTPRequest {
 	}
 	
 	
+	public void denyRequest () {
+		
+		cancelCountdown();
+		notifyDenied();
+		AvNTPRequestManager.removeRequest(id);
+		
+	}
+	
+	
 	public void recalculateCost () {
 		
 		cost = AvNTPUtils.calculateTravelCost(sender, target);
@@ -114,6 +123,14 @@ public class AvNTPRequest {
 		
 		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("outgoingTpRequestAccepted", "target", target.getDisplayName()));
 		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("incomingTpRequestAccepted", "sender", sender.getDisplayName()));
+		
+	}
+	
+	
+	private void notifyDenied () {
+		
+		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("outgoingTpRequestDenied", "target", target.getDisplayName()));
+		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("incomingTpRequestDenied", "sender", sender.getDisplayName()));
 		
 	}
 	

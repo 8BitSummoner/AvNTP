@@ -71,6 +71,28 @@ public class AvNTPRequestManager {
 	}
 	
 	
+	public static boolean denyLatestRequest (Player sender) {
+		
+		ArrayList<String> keys = new ArrayList<>(requests.keySet());
+		Collections.reverse(keys);
+		
+		for (String id : keys) {
+			
+			if (AvNTPUtils.splitRequestId(id)[1].equalsIgnoreCase(sender.getUniqueId().toString())) {
+				
+				requests.get(id).denyRequest();
+				return true;
+				
+			}
+			
+		}
+		
+		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("noRequestsToDeny"));
+		return false;
+		
+	}
+	
+	
 	public static boolean cancelAllRequests (Player sender) {
 		
 		boolean succeeded = false;
