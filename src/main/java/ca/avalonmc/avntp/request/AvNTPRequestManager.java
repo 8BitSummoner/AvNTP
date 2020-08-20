@@ -23,7 +23,7 @@ public class AvNTPRequestManager {
 			
 		}
 		
-		double cost = (int)Math.round(sender.getLocation().distance(targetPlayer.getLocation())) * config.getDouble("costPerBlock", 0);
+		double cost = AvNTPUtils.roundToPlaces((int)Math.round(sender.getLocation().distance(targetPlayer.getLocation())) * config.getDouble("costPerBlock", 0), 3);
 		
 		if (!econ.has(sender, cost)) {
 			

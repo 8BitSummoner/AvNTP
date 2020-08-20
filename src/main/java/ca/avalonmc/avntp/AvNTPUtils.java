@@ -43,4 +43,20 @@ public class AvNTPUtils {
 		
 	}
 	
+	
+	public static String[] splitRequestId (String id) {
+		
+		return id.split("\\.");
+		
+	}
+	
+	
+	public static double roundToPlaces(double value, int places) {
+		
+		double scale = Math.pow(10, places);
+		
+		return Math.round(value * scale) / scale;
+		
+	}
+	
 }
