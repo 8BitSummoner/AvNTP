@@ -41,9 +41,8 @@ public class CommandTPA extends AvNTPCommand {
 		
 		}
 		
-		AvNTPRequestManager.registerNewRequest((Player)sender, targetPlayer, AvNTPRequest.RequestType.TPA);
+		return AvNTPRequestManager.registerNewRequest((Player)sender, targetPlayer, AvNTPRequest.RequestType.TPA);
 		
-		return true;
 	}
 	
 }

@@ -122,6 +122,7 @@ public abstract class AvNTPCommand implements CommandExecutor {
 		if (targetPlayer.getUniqueId().equals(((Player)sender).getUniqueId())) {
 			
 			sender.sendMessage(AvNTPUtils.processMessage("targetSameAsSender"));
+			return false;
 			
 		}
 		

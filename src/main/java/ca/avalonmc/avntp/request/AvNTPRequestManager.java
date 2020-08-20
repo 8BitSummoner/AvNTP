@@ -14,12 +14,12 @@ public class AvNTPRequestManager {
 	private static HashMap<String, AvNTPRequest> requests = new HashMap<>();
 	
 	
-	public static void registerNewRequest (Player sender, Player targetPlayer, AvNTPRequest.RequestType type) {
+	public static boolean registerNewRequest (Player sender, Player targetPlayer, AvNTPRequest.RequestType type) {
 		
 		if (requests.containsKey(AvNTPUtils.getRequestId(sender, targetPlayer))) {
 			
 			sender.sendMessage(AvNTPUtils.processMessage("requestAlreadyExists"));
-			return;
+			return false;
 			
 		}
 		
@@ -28,13 +28,15 @@ public class AvNTPRequestManager {
 		if (!econ.has(sender, cost)) {
 			
 			sender.sendMessage(AvNTPUtils.processMessage("notEnoughCurrency", "cost", Double.toString(cost)));
-			return;
+			return false;
 			
 		}
 		
 		sender.sendMessage(AvNTPUtils.processMessage("requestSent", "targetPlayer", targetPlayer.getDisplayName(), "cost", Double.toString(cost)));
 		
 		requests.put(AvNTPUtils.getRequestId(sender, targetPlayer), new AvNTPRequest(sender, targetPlayer, type));
+		
+		return true;
 		
 	}
 	
