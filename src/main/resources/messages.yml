@@ -17,5 +17,5 @@ notEnoughCurrency: "{&}cYou do not have enough rubies. You need {&}6{cost}{&}c r
 requestSent: "{&}bRequest sent to {&}6{targetPlayer}{&}b. This will cost {&}6{cost}{&}b rubies. Type {&}a/tpacancel{&}b to cancel."
 tpaRequestReceived: "{&}6{sender}{&}b has requested to teleport to you. Type {&}a/tpaccept{&}b to accept, or {&}a/tpadeny{&}b to decline."
 tpaHereRequestReceived: "{&}6{sender}{&}b has requested you to teleport to them. Type {&}a/tpaccept{&}b to accept, or {&}a/tpadeny{&}b to decline."
-outgoingTpRequestTimedOut: "{&}cYour tp request to {&}6{target}{&}c has timed out."
-incomingTpRequestTimedOut: "{&}cYour tp request from {&}6{sender}{&}c has timed out."
+outgoingTpRequestTimedOut: "{&}cYour teleportation request to {&}6{target}{&}c has timed out."
+incomingTpRequestTimedOut: "{&}cYour teleportation request from {&}6{sender}{&}c has timed out."

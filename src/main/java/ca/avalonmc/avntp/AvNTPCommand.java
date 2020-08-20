@@ -8,8 +8,6 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static ca.avalonmc.avntp.AvNTPUtils.*;
-
 
 public abstract class AvNTPCommand implements CommandExecutor {
 	
