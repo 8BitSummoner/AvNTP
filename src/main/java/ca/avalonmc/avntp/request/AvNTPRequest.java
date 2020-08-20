@@ -31,29 +31,39 @@ public class AvNTPRequest {
 			
 		}, 20 * AvNTP.config.getInt("requestLiveTime", 30));
 		
+		notifyReceived();
+		
+	}
+	
+	
+	public void cancelRequest() {
+		
+		cancelCountdown();
+		notifyCancelled();
+		AvNTPRequestManager.removeRequest(id);
+		
+	}
+	
+	
+	private void notifyReceived() {
+		
 		if (type == RequestType.TPA) {
-		
-			notifyTPA();
-		
+			
+			AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("tpaRequestReceived", "sender", sender.getDisplayName()));
+			
 		} else if (type == RequestType.TPAHERE) {
 			
-			notifyTPAHere();
+			AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("tpaHereRequestReceived", "sender", sender.getDisplayName()));
 			
 		}
 		
 	}
 	
 	
-	private void notifyTPA() {
+	private void notifyCancelled() {
 		
-		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("tpaRequestReceived", "sender", sender.getDisplayName()));
-		
-	}
-	
-	
-	private void notifyTPAHere() {
-		
-		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("tpaHereRequestReceived", "sender", sender.getDisplayName()));
+		AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("outgoingTpRequestCancelled", "target", target.getDisplayName()));
+		AvNTPUtils.sendMessage(target, AvNTPUtils.processMessage("incomingTpRequestCancelled", "sender", sender.getDisplayName()));
 		
 	}
 	

@@ -1,6 +1,7 @@
 package ca.avalonmc.avntp;
 
 import ca.avalonmc.avntp.commands.CommandTPA;
+import ca.avalonmc.avntp.commands.CommandTPACancel;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -69,6 +70,7 @@ public final class AvNTP extends JavaPlugin {
 		AvNTPCommandManager commandManager = new AvNTPCommandManager();
 		
 		commandManager.registerCommand("avntpa", CommandTPA.class, "<player>");
+		commandManager.registerCommand("avntpacancel", CommandTPACancel.class);
 		
 	}
 	
