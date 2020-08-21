@@ -95,26 +95,32 @@ public class AvNTPRequestManager {
 	
 	public static boolean cancelAllRequests (Player sender) {
 		
-		boolean succeeded = false;
+		ArrayList<String> toCancel = new ArrayList<>();
 	
 		for (String id : requests.keySet()) {
 			
 			if (AvNTPUtils.splitRequestId(id)[0].equalsIgnoreCase(sender.getUniqueId().toString())) {
 			
-				requests.get(id).cancelRequest();
-				succeeded = true;
+				toCancel.add(id);
 			
 			}
 			
 		}
 		
-		if (!succeeded) {
+		if (toCancel.size() == 0) {
 			
 			AvNTPUtils.sendMessage(sender, AvNTPUtils.processMessage("noRequestsToCancel"));
+			return false;
 			
 		}
 		
-		return succeeded;
+		for (String id : toCancel) {
+			
+			requests.get(id).cancelRequest();
+			
+		}
+		
+		return true;
 	
 	}
 	
